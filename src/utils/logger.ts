@@ -3,7 +3,6 @@ import DailyRotateFile from "winston-daily-rotate-file";
 const { printf } = format;
 
 const logDirectory = "src/logs";
-
 const customLevels = {
   levels: {
     critical: 0,
