@@ -23,7 +23,7 @@ A modern, secure, and scalable REST API for managing vehicle rental operations b
 | **Framework**       | Express.js            |
 | **Database**        | PostgreSQL            |
 | **Authentication**  | JWT (JSON Web Tokens) |
-| **Deployment**      | Vercel                |
+| **Deployment**      | VPS Hosting           |
 | **Package Manager** | pnpm                  |
 
 ## 🚀 Getting Started
@@ -68,37 +68,51 @@ A modern, secure, and scalable REST API for managing vehicle rental operations b
    pnpm run dev
    ```
 
-The API will be available at `http://localhost:3000`
+The API will be available at `http://localhost:5000`
 
 ## 📖 API Documentation
 
 ### Authentication Endpoints
 
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
+| Method | Endpoint              | Description                | Auth Required |
+| ------ | --------------------- | -------------------------- | ------------- |
+| POST   | `/api/v1/auth/signup` | Register a new user        | ❌ No         |
+| POST   | `/api/v1/auth/signin` | User login                 | ❌ No         |
+| GET    | `/api/v1/auth/me`     | Get current logged-in user | ✅ Yes        |
 
 ### Vehicle Endpoints
 
-- `GET /api/vehicles` - Get all vehicles
-- `GET /api/vehicles/:id` - Get vehicle details
-- `POST /api/vehicles` - Create new vehicle (Admin)
-- `PUT /api/vehicles/:id` - Update vehicle (Admin)
-- `DELETE /api/vehicles/:id` - Delete vehicle (Admin)
+| Method | Endpoint                      | Description                            | Auth Required | Role  |
+| ------ | ----------------------------- | -------------------------------------- | ------------- | ----- |
+| GET    | `/api/v1/vehicles`            | Get all vehicles with filters          | ❌ No         | -     |
+| GET    | `/api/v1/vehicles/:vehicleId` | Get vehicle details                    | ❌ No         | -     |
+| POST   | `/api/v1/vehicles`            | Create new vehicle                     | ✅ Yes        | Admin |
+| PUT    | `/api/v1/vehicles/:vehicleId` | Update vehicle details                 | ✅ Yes        | Admin |
+| DELETE | `/api/v1/vehicles/:vehicleId` | Delete vehicle (if no active bookings) | ✅ Yes        | Admin |
 
 ### Booking Endpoints
 
-- `GET /api/bookings` - Get all bookings
-- `POST /api/bookings` - Create new booking
-- `GET /api/bookings/:id` - Get booking details
-- `PUT /api/bookings/:id` - Update booking
-- `DELETE /api/bookings/:id` - Cancel booking
+| Method | Endpoint                      | Description                              | Auth Required | Role           |
+| ------ | ----------------------------- | ---------------------------------------- | ------------- | -------------- |
+| POST   | `/api/v1/bookings`            | Create new booking                       | ✅ Yes        | Customer/Admin |
+| GET    | `/api/v1/bookings`            | Get bookings (admin: all, customer: own) | ✅ Yes        | Customer/Admin |
+| PUT    | `/api/v1/bookings/:bookingId` | Update booking (Cancel or Return)        | ✅ Yes        | Customer/Admin |
 
 ### User Endpoints
 
-- `GET /api/users/profile` - Get user profile
-- `PUT /api/users/profile` - Update user profile
-- `GET /api/users` - Get all users (Admin)
+| Method | Endpoint                | Description         | Auth Required | Role           |
+| ------ | ----------------------- | ------------------- | ------------- | -------------- |
+| GET    | `/api/v1/users`         | Get all users       | ✅ Yes        | Admin          |
+| GET    | `/api/v1/users/:userId` | Get user by ID      | ✅ Yes        | Admin          |
+| PUT    | `/api/v1/users/:userId` | Update user profile | ✅ Yes        | Admin/Own User |
+| DELETE | `/api/v1/users/:userId` | Delete user account | ✅ Yes        | Admin          |
+
+### Utility Endpoints
+
+| Method | Endpoint  | Description          |
+| ------ | --------- | -------------------- |
+| GET    | `/`       | API welcome message  |
+| GET    | `/health` | Service health check |
 
 ## 🔧 Project Structure
 
@@ -132,21 +146,13 @@ pnpm run dev          # Start development server with auto-reload
 pnpm run build        # Compile TypeScript
 pnpm run start        # Start production server
 
-# Database
-pnpm run db:migrate   # Run database migrations
-pnpm run db:seed      # Seed database with sample data
-pnpm run db:studio    # Open Prisma Studio
-
-# Quality
-pnpm run lint         # Run linter
-pnpm run format       # Format code
 ```
 
 ## 🌐 Live Deployment
 
 The API is deployed and accessible at:
 
-- **Live URL**: [Vehicle Rental API](https://your-deployment-url.vercel.app)
+- **Live URL**: [Vehicle Rental API](https://car.rejoyan.me)
 - **Status**: Production Ready
 
 ## 📤 Submission Guide
@@ -171,38 +177,12 @@ The API is deployed and accessible at:
 
 ```
 GitHub Repo: https://github.com/md-rejoyan-islam/vehicle-rental-api
-Live Deployment: https://your-deployment-url.vercel.app
+Live Deployment: https://car.rejoyan.me
 ```
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 👨‍💻 Author
 
 **Md. Rejoyan Islam**
 
 - GitHub: [@md-rejoyan-islam](https://github.com/md-rejoyan-islam)
-- Email: [your-email@example.com]
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📧 Support
-
-For issues and questions:
-
-- Open an issue on GitHub
-- Check existing documentation
-- Review API error messages
-
----
-
-**Last Updated**: December 7, 2025
+- Email: [rejoyanislam0014@gmail.com]
