@@ -2,7 +2,7 @@ import { createLogger, format, transports } from "winston";
 import DailyRotateFile from "winston-daily-rotate-file";
 const { printf } = format;
 
-const logDirectory = "src/logs";
+const logDirectory = "temp/logs";
 
 const customLevels = {
   levels: {
