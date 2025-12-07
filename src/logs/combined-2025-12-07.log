@@ -1,0 +1,10 @@
+{"level":"info","message":"PostgreSQL connected successfully","source":"Database","timestamp":"2025-12-07T16:18:47.643Z"}
+{"level":"info","message":"Starting database synchronization...","source":"Database Sync","timestamp":"2025-12-07T16:18:47.645Z"}
+{"level":"info","message":"Database synchronization completed successfully","source":"Database Sync","timestamp":"2025-12-07T16:18:47.825Z"}
+{"level":"info","message":"Server running on port 5000","source":"Server","timestamp":"2025-12-07T16:18:47.829Z"}
+{"level":"info","message":"PostgreSQL connected successfully","source":"Database","timestamp":"2025-12-07T16:19:46.541Z"}
+{"level":"info","message":"Starting database synchronization...","source":"Database Sync","timestamp":"2025-12-07T16:19:46.543Z"}
+{"level":"info","message":"Database synchronization completed successfully","source":"Database Sync","timestamp":"2025-12-07T16:19:46.720Z"}
+{"level":"info","message":"Server running on port 5000","source":"Server","timestamp":"2025-12-07T16:19:46.725Z"}
+{"level":"error","message":"User not found","name":"UnauthorizedError","stack":"UnauthorizedError: User not found\n    at Object.login (/home/rejoyan/Desktop/her/car/src/modules/auth/auth.service.ts:44:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async <anonymous> (/home/rejoyan/Desktop/her/car/src/modules/auth/auth.controller.ts:20:18)","status":401,"timestamp":"2025-12-07T16:22:33.816Z"}
+{"level":"error","message":"Invalid email or password","name":"UnauthorizedError","stack":"UnauthorizedError: Invalid email or password\n    at Object.login (/home/rejoyan/Desktop/her/car/src/modules/auth/auth.service.ts:51:23)\n    at async <anonymous> (/home/rejoyan/Desktop/her/car/src/modules/auth/auth.controller.ts:20:18)","status":401,"timestamp":"2025-12-07T16:22:41.290Z"}
